@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <title>淘表网</title>
     <style>
-        div.in{background-color:darkgrey;
+        div.in{background-color:bisque;
             position: fixed;
             top:50px;
-            right:10px;}
+            right:10px;
+            }
+        div.product{background-color: darkgrey;
+            position: absolute;
+            margin: auto;
+            top:50%;
+            width: 343px;
+            left: 35%;
+            height: auto;
+            }
     </style>
 </head>
 <body>
@@ -17,7 +26,7 @@
     {% if request.session.is_login %}
         <h3>你好,{{ request.session.user_name }}！</h3>
     {% endif %}
-    <div class="in">
+    <div class="in"><!--登陆注册块-->
     <ul class="nav navbar-nav navbar-right" >
         {% if request.session.is_login %}
             <li><a href="#">当前在线：{{ request.session.user_name }}</a></li>
@@ -28,9 +37,17 @@
         {% endif %}
     </ul>
     </div>
-    <div class="product" >
-
+    <div class="product" ><!--商品展示块-->
+    {% for photo in photos %}
+        <img src="{{ photo.url }}"><br>
+        <h4>{{ photo.product.product_name }}</h4>
+        <p>价格：{{ photo.product.price }}元</p>
+        <p>库存：{{ photo.product.amount }}</p>
+        <p>{{ photo.product.product_description }}</p>
+        <button class="bullets">放入购物车</button><br><br><br>
+    {% endfor %}
     </div>
+
 </div>
 </body>
 </html>

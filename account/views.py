@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import UserForm, RegisterForm
-from account.models import User
+from account.models import User, Product, Photo
 
 
 # Create your views here.
@@ -36,7 +36,7 @@ def logout(request):
     if not request.session.get('is_login', None):
         return redirect('/login/')
     request.session.flush()
-    return redirect('/login/')
+    return redirect('/home/')
 
 
 def register(request):
@@ -66,4 +66,6 @@ def register(request):
 
 
 def home(request):
+    products = Product.objects.all()
+    photos = Photo.objects.all()
     return render(request, 'home.html', locals())
