@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from account import views
-from django.conf.urls import url
+from django.conf.urls import url, include
+from account.controller import cartController
+from django.urls import path
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,4 +25,8 @@ urlpatterns = [
     url(r'^logout/', views.logout),
     url(r'^register/', views.register),
     url(r'^home/', views.home),
+    url(r'^captcha/', include('captcha.urls')),
+    url(r'^cart/$', views.cart),
+    path('addcart', views.add_to_cart),
+    path('deletecart', views.remove_from_cart),
 ]
