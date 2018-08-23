@@ -5,7 +5,6 @@ from cart.cart import Cart
 import json
 from django.http import HttpResponse
 
-
 # Create your views here.
 
 
@@ -75,13 +74,17 @@ def home(request):
 
 
 def add_to_cart(request):
-    product_name = request.POST['product_name']                   # 获取目标商品
-    product = Product.objects.get(product_name=product_name)      
-    quantity = 1                                                 # 每次添加数量为1
-    cart = Cart(request)
-    cart.add(product, product.price, quantity)
-    resp = {'errCode': 0, "data":'', "msg":'加入购物车成功'}      # 消息返回前端
-    return HttpResponse(json.dumps(resp), content_type="application/json")
+    if request.session.get('is_login', None):
+        product_name = request.POST['product_name']                   # 获取目标商品
+        product = Product.objects.get(product_name=product_name)
+        quantity = 1                                                 # 每次添加数量为1
+        cart = Cart(request)
+        cart.add(product, product.price, quantity)
+        resp = {'errCode': 0, "data": '', "msg": '加入购物车成功'}      # 消息返回前端
+        return HttpResponse(json.dumps(resp), content_type="application/json")
+    else:
+        resp = {'errCode': 0, "data": '', "msg": '请先登录'}
+        return HttpResponse(json.dumps(resp), content_type="application/json")
 
 
 def remove_from_cart(request):
@@ -89,7 +92,7 @@ def remove_from_cart(request):
     product = Product.objects.get(product_name=product_name)
     cart = Cart(request)
     cart.remove(product)
-    resp = {'errCode': 0, "data":'', "msg":'删除物品成功'}
+    resp = {'errCode': 0, "data": '', "msg": '删除物品成功'}
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
 

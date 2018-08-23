@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from account import views
 from django.conf.urls import url, include
-from account.controller import cartController
 from django.urls import path
 
 urlpatterns = [
