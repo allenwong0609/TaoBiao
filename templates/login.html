@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
+    <style>
+        .top{
+            width:100%;
+            height:100px;
+            float: left;
+            border-radius: 10px;
+        }
+        .top ul{
+            width:100%;
+            height:100px;
+            float: left;
+            list-style: none;
+        }
+        .top ul li{
+            width:auto;
+            height:100px;
+            float: left;
+            border-radius: 7px;
+            line-height: 60px;
+            text-decoration: none;
+            margin-right:20px;
+        }
+        div.top{
+            background-color: deepskyblue;
+            display: inline;
+        }
+    </style>
 </head>
 <body>
-     <div style="margin: 10% 30%;">
+    <div class="top">
+        <ul>
+            <li><a href="/home/">主页</a> </li>
+            {% if request.session.is_login %}
+                <li><a href="/cart/">我的购物车</a> </li>
+            {% endif %}
+        </ul>
+    </div>
+     
+    <div style="margin: 10% 30%;">
         <h1>欢迎进入淘表网！请先登录</h1>
        <form action="login.html" method="post">
            {% if message %}

@@ -155,7 +155,7 @@
                 $.ajax({
                 async: false,
                 type: "POST",
-                url:'http://127.0.0.1:8000/deletecart',
+                url:'http://47.107.49.254/deletecart',
                 contentType : "application/x-www-form-urlencoded; charset=utf-8",
                 data:{
                     product_name: productName,
@@ -165,7 +165,7 @@
                     console.log(res);
                     if(res.errCode == 0){
                         alert(res.msg);
-                        window.location.href = 'http://127.0.0.1:8000/cart'
+                        window.location.href = 'http://47.107.49.254/cart'
                     }else{
                         alert('网络异常,请重试');
                     }

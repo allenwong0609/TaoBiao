@@ -109,7 +109,7 @@
 <div class="container">
     <div class="top">
         <ul>
-            <li><a href="/login/">主页</a> </li>
+            <li><a href="/home/">主页</a> </li>
             {% if request.session.is_login %}
                 <li><a href="/cart/">我的购物车</a> </li>
             {% endif %}
@@ -164,7 +164,7 @@
                 $.ajax({
                 async: false,
                 type: "POST",
-                url:'http://127.0.0.1:8000/addcart',
+                url:'http://47.107.49.254/addcart',
                 contentType : "application/x-www-form-urlencoded; charset=utf-8",
                 data:{
                     product_name: productName,
