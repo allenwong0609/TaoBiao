@@ -1,115 +1,114 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>淘表网</title>
-    <style>
-        .top{
-            width:100%;
-            height:100px;
-            float: left;
-            border-radius: 10px;
-        }
-        .top ul{
-            width:100%;
-            height:100px;
-            float: left;
-            list-style: none;
-        }
-        .top ul li{
-            width:auto;
-            height:100px;
-            float: left;
-            border-radius: 7px;
-            line-height: 60px;
-            text-decoration: none;
-            margin-right:20px;
-        }
-        div.top{
-            background-color: deepskyblue;
-            display: inline;
-        }
-        div.in{
-            border:2px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 5px 5px 10px #ccc;
-            background-color: #fff;
-            position: fixed;
-            top:50px;
-            right:10px;
-            z-index: 2;
-            }
-        .product-theme{
-            width:100%;
-            float: left;
-            height:auto;
-        }
-        .product{
-            border:2px solid rgb(238, 173, 34);
-            border-radius: 10px;
-            float: left;
-            width: calc(100% / 3 - 50px);
-            height: auto;
-            margin: 15px;
-        }
-        div.picture{
-            float: left;
-            text-align: center;
-            width: 100%;
-            background-color: gainsboro;
-        }
+<style>
+    .top{
+    width:100%;
+    height:100px;
+    float: left;
+    border-radius: 10px;
+}
+.top ul{
+    width:100%;
+    height:100px;
+    float: left;
+    list-style: none;
+}
+.top ul li{
+    width:auto;
+    height:100px;
+    float: left;
+    border-radius: 7px;
+    line-height: 60px;
+    text-decoration: none;
+    margin-right:20px;
+}
+div.top{
+    background-color: deepskyblue;
+    display: inline;
+}
+div.in{
+    border:2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #ccc;
+    background-color: #fff;
+    position: fixed;
+    top:50px;
+    right:10px;
+    z-index: 2;
+    }
+.product-theme{
+    width:100%;
+    float: left;
+    height:auto;
+}
+.product{
+    border:2px solid rgb(238, 173, 34);
+    border-radius: 10px;
+    float: left;
+    width: calc(100% / 3 - 50px);
+    height: auto;
+    margin: 15px;
+}
+div.picture{
+    float: left;
+    text-align: center;
+    width: 100%;
+    background-color: gainsboro;
+}
 
-        div.msg{
-            float: right;
-            width: 100%;
-            overflow: hidden;
-            word-break: break-all;
-            text-align: center;
-            background-color:gainsboro;
-            font-weight: 300;
-        }
-        img{
-            height: 300px;
-            width: 200px;
-        }
-        .put-btn{
-            background-color:#ff0000;
-            color:white;
-            width:120px;
-            height:auto;
-            line-height:60px;
-            border:none;
-            cursor: pointer;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            margin: 25px;
-        }
-        pre {
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        }
-        .nav{
-            text-align:left;
-            padding-right:50px;
-            list-style: none;
-        }
-        a{
-            text-decoration: none;
-        }
-        .a-btn{
-            width:100%;
-            margin-bottom: 0;
-            background-color: #5bc0de;
-        }
-    </style>
+div.msg{
+    float: right;
+    width: 100%;
+    overflow: hidden;
+    word-break: break-all;
+    text-align: center;
+    background-color:gainsboro;
+    font-weight: 300;
+}
+img{
+    height: 300px;
+    width: 200px;
+}
+.put-btn{
+    background-color:#ff0000;
+    color:white;
+    width:120px;
+    height:auto;
+    line-height:60px;
+    border:none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 25px;
+}
+pre {
+white-space: pre-wrap;
+word-wrap: break-word;
+}
+.nav{
+    text-align:left;
+    padding-right:50px;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.a-btn{
+    width:100%;
+    margin-bottom: 0;
+    background-color: #5bc0de;
+}
+</style>
 </head>
 <body>
 <div id="csrf" style="display: none">{{csrf_token}}</div>
 <div class="container">
     <div class="top">
         <ul>
-            <li><a href="/home/">主页</a> </li>
+            <li><a href="/login/">主页</a> </li>
             {% if request.session.is_login %}
                 <li><a href="/cart/">我的购物车</a> </li>
             {% endif %}
@@ -155,7 +154,7 @@
 </div>
 </body>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         $(function () {
             $('.put-btn').on('click', function (e) {
@@ -164,7 +163,7 @@
                 $.ajax({
                 async: false,
                 type: "POST",
-                url:'http://47.107.49.254/addcart',
+                url:'http://47.107.49.254:8000/addcart',
                 contentType : "application/x-www-form-urlencoded; charset=utf-8",
                 data:{
                     product_name: productName,

@@ -28,4 +28,7 @@ urlpatterns = [
     url(r'^cart/$', views.cart),
     path('addcart', views.add_to_cart),
     path('deletecart', views.remove_from_cart),
+    url(r'^allen/', views.allen),
+    url(r'^introduce/', views.introduce),
+    url(r'^skill/', views.skill),
 ]

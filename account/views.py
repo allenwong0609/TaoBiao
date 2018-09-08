@@ -103,4 +103,14 @@ def cart(request):
         return render(request, 'mycar.html', locals())
 
 
+def allen(request):
+    return render(request, 'allen.html', locals())
+
+
+def introduce(request):
+    return render(request, 'introduce.html', locals())
+
+
+def skill(request):
+    return render(request, 'skill.html', locals())
 
